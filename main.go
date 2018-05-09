@@ -16,10 +16,10 @@ import (
 	"syscall"
 	"time"
 
-	log "github.com/sirupsen/logrus"
-	logrus_syslog "github.com/sirupsen/logrus/hooks/syslog"
 	"github.com/codegangsta/cli"
 	"github.com/miekg/dns"
+	log "github.com/sirupsen/logrus"
+	logrus_syslog "github.com/sirupsen/logrus/hooks/syslog"
 
 	"github.com/janeczku/go-dnsmasq/hostsfile"
 	"github.com/janeczku/go-dnsmasq/resolvconf"

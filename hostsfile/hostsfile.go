@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/miekg/dns"
+	log "github.com/sirupsen/logrus"
 )
 
 // Config stores options for hostsfile
@@ -107,7 +107,7 @@ func (h *Hostsfile) monitorHostEntries(poll int) {
 
 	t := time.Duration(poll) * time.Second
 
-	for _ = range time.Tick(t) {
+	for range time.Tick(t) {
 		//log.Printf("go-dnsmasq: checking %q for updates…", hf.path)
 
 		mtime, size, err := hostsFileMetadata(hf.path)
