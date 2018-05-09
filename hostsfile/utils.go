@@ -155,7 +155,7 @@ func parseLine(line string) hostlist {
 	var isIPv6 bool
 
 	switch {
-	case !ip.IsGlobalUnicast() && !ip.IsLoopback():
+	case !ip.IsGlobalUnicast() && !ip.IsLoopback() && !ip.IsUnspecified():
 		return hostnames
 	case ip.Equal(net.ParseIP("fe00::")):
 		return hostnames
