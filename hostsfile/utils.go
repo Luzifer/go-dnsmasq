@@ -73,13 +73,13 @@ func (h *hostlist) FindHosts(name string) (addrs []net.IP) {
 	}
 
 	if len(addrs) == 0 {
-		var domain_match string
+		var domainMatch string
 		for _, hostname := range *h {
 			if hostname.wildcard == true && len(hostname.domain) < len(name) {
-				domain_match = strings.Join([]string{".", hostname.domain}, "")
-				if name[len(name)-len(domain_match):] == domain_match {
+				domainMatch = strings.Join([]string{".", hostname.domain}, "")
+				if name[len(name)-len(domainMatch):] == domainMatch {
 					var left string
-					left = name[0 : len(name)-len(domain_match)]
+					left = name[0 : len(name)-len(domainMatch)]
 					if !strings.Contains(left, ".") {
 						addrs = append(addrs, hostname.ip)
 					}

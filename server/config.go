@@ -33,7 +33,7 @@ type Config struct {
 	PollInterval int `json:"poll_interval,omitempty"`
 	// Round robin A/AAAA replies. Default is true.
 	RoundRobin bool `json:"round_robin,omitempty"`
-	// List of ip:port, seperated by commas of recursive nameservers to forward queries to.
+	// List of ip:port, separated by commas of recursive nameservers to forward queries to.
 	Nameservers []string `json:"nameservers,omitempty"`
 	// Never provide a recursive service.
 	NoRec       bool          `json:"no_rec,omitempty"`

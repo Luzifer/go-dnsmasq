@@ -27,17 +27,18 @@ import (
 	"github.com/Luzifer/go-dnsmasq/stats"
 )
 
-// set at build time
-var version = "dev"
+const dnsPort = ":53"
 
 var (
+	// set at build time
+	version = "dev"
+
 	nameservers   = []string{}
 	searchDomains = []string{}
-	hostPort      = ""
 	listen        = ""
-)
 
-var exitErr error
+	exitErr error
+)
 
 func init() {
 	log.SetOutput(os.Stdout)
@@ -193,9 +194,9 @@ func main() {
 			for _, hostPort := range strings.Split(ns, ",") {
 				hostPort = strings.TrimSpace(hostPort)
 				if strings.HasSuffix(hostPort, "]") {
-					hostPort += ":53"
+					hostPort += dnsPort
 				} else if !strings.Contains(hostPort, ":") {
-					hostPort += ":53"
+					hostPort += dnsPort
 				}
 				if err := validateHostPort(hostPort); err != nil {
 					log.Fatalf("Nameserver is invalid: %s", err)
@@ -218,9 +219,9 @@ func main() {
 
 		listen = c.String("listen")
 		if strings.HasSuffix(listen, "]") {
-			listen += ":53"
+			listen += dnsPort
 		} else if !strings.Contains(listen, ":") {
-			listen += ":53"
+			listen += dnsPort
 		}
 
 		if err := validateHostPort(listen); err != nil {
@@ -269,9 +270,9 @@ func main() {
 				for _, hostPort := range hosts {
 					hostPort = strings.TrimSpace(hostPort)
 					if strings.HasSuffix(hostPort, "]") {
-						hostPort += ":53"
+						hostPort += dnsPort
 					} else if !strings.Contains(hostPort, ":") {
-						hostPort += ":53"
+						hostPort += dnsPort
 					}
 
 					if err := validateHostPort(hostPort); err != nil {
@@ -313,8 +314,7 @@ func main() {
 
 		if config.DefaultResolver {
 			address, _, _ := net.SplitHostPort(config.DnsAddr)
-			err := resolvconf.StoreAddress(address)
-			if err != nil {
+			if err = resolvconf.StoreAddress(address); err != nil {
 				log.Warnf("Failed to register as default nameserver: %s", err)
 			}
 

@@ -177,7 +177,7 @@ func TestDNSStubForward(t *testing.T) {
 	if err == nil {
 		t.Fatal("answer expected to fail for example.net")
 	} else {
-		t.Logf("succesfully failing %s", err)
+		t.Logf("successfully failing %s", err)
 	}
 
 	// Packet with EDNS0
@@ -186,7 +186,7 @@ func TestDNSStubForward(t *testing.T) {
 	if err == nil {
 		t.Fatal("answer expected to fail for example.net")
 	} else {
-		t.Logf("succesfully failing %s", err)
+		t.Logf("successfully failing %s", err)
 	}
 
 	// Now start another SkyDNS instance on a different port,
@@ -509,7 +509,7 @@ func TestDNS(t *testing.T) {
 				if x.Target != tt.Target {
 					// Super super gross hack.
 					if x.Target == "a.ipaddr.skydns.test." && tt.Target == "b.ipaddr.skydns.test." {
-						// These records are randomly choosen, either one is OK.
+						// These records are randomly chosen, either one is OK.
 						continue
 					}
 					fatal = true
