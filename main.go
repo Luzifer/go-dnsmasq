@@ -28,7 +28,7 @@ import (
 )
 
 // set at build time
-var Version = "dev"
+var version = "dev"
 
 var (
 	nameservers   = []string{}
@@ -48,7 +48,7 @@ func main() {
 	app.Name = "go-dnsmasq"
 	app.Usage = "Lightweight caching DNS server and forwarder\n   Website: http://github.com/Luzifer/go-dnsmasq"
 	app.UsageText = "go-dnsmasq [global options]"
-	app.Version = Version
+	app.Version = version
 	app.Author, app.Email = "", ""
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
@@ -291,7 +291,7 @@ func main() {
 			config.Stub = &stubmap
 		}
 
-		log.Infof("Starting go-dnsmasq server %s", Version)
+		log.Infof("Starting go-dnsmasq server %s", version)
 		log.Infof("Nameservers: %v", config.Nameservers)
 		if config.EnableSearch {
 			log.Infof("Search domains: %v", config.SearchDomains)
@@ -305,7 +305,7 @@ func main() {
 			log.Fatalf("Error loading hostsfile: %s", err)
 		}
 
-		s := server.New(hf, config, Version)
+		s := server.New(hf, config, version)
 
 		defer s.Stop()
 
