@@ -12,8 +12,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/coreos/go-systemd/activation"
 	"github.com/Luzifer/go-dnsmasq/cache"
+	"github.com/coreos/go-systemd/activation"
 	"github.com/miekg/dns"
 	log "github.com/sirupsen/logrus"
 )
