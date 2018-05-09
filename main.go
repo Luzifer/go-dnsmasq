@@ -91,12 +91,6 @@ func main() {
 			Usage:  "List of search domains <domain[,domain]> (supersedes resolv.conf)",
 			EnvVar: "DNSMASQ_SEARCH_DOMAINS,DNSMASQ_SEARCH,", // deprecated DNSMASQ_SEARCH
 		},
-		cli.BoolFlag{ // deprecated
-			Name:   "append-search-domains, a",
-			Usage:  "Resolve queries using search domains",
-			EnvVar: "DNSMASQ_APPEND",
-			Hidden: true,
-		},
 		cli.BoolFlag{
 			Name:   "enable-search, search",
 			Usage:  "Qualify names with search domains to resolve queries",
@@ -157,7 +151,7 @@ func main() {
 			EnvVar: "DNSMASQ_MULTITHREADING",
 		},
 	}
-	app.Action = func(c *cli.Context) error {
+	app.Action = func(c *cli.Context) {
 		exitReason := make(chan error)
 		go func() {
 			c := make(chan os.Signal, 1)
@@ -340,8 +334,6 @@ func main() {
 		if exitErr != nil {
 			log.Fatalf("Server error: %s", err)
 		}
-
-		return nil
 	}
 
 	app.Run(os.Args)
