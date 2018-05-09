@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/coreos/go-systemd/activation"
-	"github.com/janeczku/go-dnsmasq/cache"
+	"github.com/Luzifer/go-dnsmasq/cache"
 	"github.com/miekg/dns"
 	log "github.com/sirupsen/logrus"
 )

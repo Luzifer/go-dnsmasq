@@ -2,7 +2,7 @@
 // Use of this source code is governed by The MIT License (MIT) that can be
 // found in the LICENSE file.
 
-package main // import "github.com/janeczku/go-dnsmasq"
+package main // import "github.com/Luzifer/go-dnsmasq"
 
 import (
 	"fmt"
@@ -21,10 +21,10 @@ import (
 	log "github.com/sirupsen/logrus"
 	logrus_syslog "github.com/sirupsen/logrus/hooks/syslog"
 
-	"github.com/janeczku/go-dnsmasq/hostsfile"
-	"github.com/janeczku/go-dnsmasq/resolvconf"
-	"github.com/janeczku/go-dnsmasq/server"
-	"github.com/janeczku/go-dnsmasq/stats"
+	"github.com/Luzifer/go-dnsmasq/hostsfile"
+	"github.com/Luzifer/go-dnsmasq/resolvconf"
+	"github.com/Luzifer/go-dnsmasq/server"
+	"github.com/Luzifer/go-dnsmasq/stats"
 )
 
 // set at build time
@@ -46,7 +46,7 @@ func init() {
 func main() {
 	app := cli.NewApp()
 	app.Name = "go-dnsmasq"
-	app.Usage = "Lightweight caching DNS server and forwarder\n   Website: http://github.com/janeczku/go-dnsmasq"
+	app.Usage = "Lightweight caching DNS server and forwarder\n   Website: http://github.com/Luzifer/go-dnsmasq"
 	app.UsageText = "go-dnsmasq [global options]"
 	app.Version = Version
 	app.Author, app.Email = "", ""
